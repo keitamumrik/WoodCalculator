@@ -17,20 +17,35 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,
     @IBOutlet weak var height: UITextField! //厚さ
     @IBOutlet weak var weight: UILabel!
     
+    var dataList:[String] = ["杉","ヒノキ","楠","桜","楓"]
+    
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1
+        return dataList.count
     }
     
-
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+     kindOfWood.text = self.pickerView(pickerView, titleForRow: pickerView.selectedRow(inComponent: 0), forComponent: 0)
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print("dataListの個数は \(dataList.count)")
+        for dataListRow in dataList{
+        print("dataListの要素は\(dataListRow)")
+        }
+        
+        
         length.placeholder = "1800"
         width.placeholder = "1000"
         height.placeholder = "65"
@@ -59,6 +74,9 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,
             //空欄はダメ
         //体積を求める
         taiseki = Int(length.text!)! * Int(width.text!)! * Int(height.text!)!
+        
+        //木の種類によって比重を乗算する
+        
 
         //重さに表示
         weight.text = String(taiseki)
