@@ -79,11 +79,19 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,
         var specificGravity:Double
         var weight_ton:Double
         //長さ、幅、厚さを取得
-            //空欄はダメ
-        if(length != nil && width != nil && height != nil){
-
+            //空欄はダメ。空欄の場合、標準の値を代入する
+        
+        if(length.text == ""){
+            length.text = String(1800)
+        }
+        if(width.text == ""){
+            width.text = String(1000)
+        }
+        if(height.text == ""){
+            height.text = String(65)
+        }
         //体積(mm^3) = 長さ(mm) * 幅(mm) * 厚さ(mm)
-        cubicVolume_millimetor = Double(length.text!)! * Double(width.text!)! * Double(height.text!)!
+        cubicVolume_millimetor = atof(length.text) * atof(width.text) * atof(height.text)
         cubicVolume_metor = cubicVolume_millimetor/1000000000
         
         //木の種類から比重を取得する
@@ -94,9 +102,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,
         
         //重さ(kg) を表示
         weight.text = String(weight_ton * 1000)
-        }else{
-            weight.text = "0"
-        }
+        
     }
     
     override func didReceiveMemoryWarning() {
