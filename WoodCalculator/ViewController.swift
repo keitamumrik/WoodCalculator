@@ -19,8 +19,8 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,
     @IBOutlet weak var weight: UILabel!
     
     var kindOfWoodNum = 0
-    var dataListWoodName:[String] = ["杉","ヒノキ","楠","桜","楓"]
-    var dataListSpecificGravity:[Double] = [0.9,0.8,0.7,0.6,0.5]
+    var dataListWoodName:[String] = ["杉","ヒノキ","楠","桜","ウォールナット","楓"]
+    var dataListSpecificGravity:[Double] = [0.38,0.41,0.52,0.6,0.64,0.77]
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
