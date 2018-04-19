@@ -10,8 +10,9 @@ import UIKit
 
 class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
     
-    @IBOutlet weak var kindOfWood: UILabel!
+//    @IBOutlet weak var kindOfWood: UILabel!
     
+    @IBOutlet weak var specificGravity: UILabel!
     
     @IBOutlet weak var length: UITextField! //長さ
     @IBOutlet weak var width: UITextField!  //幅
@@ -19,8 +20,8 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,
     @IBOutlet weak var weight: UILabel!
     
     var kindOfWoodNum = 0
-    var dataListWoodName:[String] = ["杉","ヒノキ","楠","桜","ウォールナット","楓"]
-    var dataListSpecificGravity:[Double] = [0.38,0.41,0.52,0.6,0.64,0.77]
+    var dataListWoodName:[String] = ["選択してください","杉","ヒノキ","楠","桜","ウォールナット","楓"]
+    var dataListSpecificGravity:[Double] = [1.00,0.38,0.41,0.52,0.6,0.64,0.77]
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -37,8 +38,8 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        kindOfWood.text = self.pickerView(pickerView, titleForRow: pickerView.selectedRow(inComponent: 0), forComponent: 0)
         kindOfWoodNum = pickerView.selectedRow(inComponent: 0)
+        specificGravity.text = String(dataListSpecificGravity[kindOfWoodNum])
     }
     
 
